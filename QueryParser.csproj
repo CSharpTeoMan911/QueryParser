@@ -8,7 +8,7 @@
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<Authors>Teodor Mihail</Authors>
-	<Version>1.0.1</Version>
+	<Version>1.0.2</Version>
 	<Description>
 		QueryParser it is a .NET package that allows users to convert objects into HTTP query parameters to be used within an HTTP request.
 	</Description>
@@ -16,8 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	<None Include="LICENSE.txt" Pack="true" Visible="false" PackagePath=""/>
-	<None Include="README.md" Pack="true" Visible="false" PackagePath=""/>
+	<None Include="LICENSE.txt" Pack="true" Visible="false" PackagePath="" />
+	<None Include="README.md" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include=".github\" />
   </ItemGroup>
 
 </Project>
