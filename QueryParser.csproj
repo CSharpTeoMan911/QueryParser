@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	 <PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<Authors>Teodor Mihail</Authors>
+	<Version>1.0.1</Version>
+	<Description>
+		QueryParser it is a .NET package that allows users to convert objects into HTTP query parameters to be used within an HTTP request.
+	</Description>
   </PropertyGroup>
 
   <ItemGroup>
