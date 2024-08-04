@@ -51,4 +51,5 @@ NuGet\Install-Package QueryParser -Version 1.0.2
 
 ## Links
 NuGet: https://www.nuget.org/packages/QueryParser
+<br/>
 GitHub: https://github.com/CSharpTeoMan911/QueryParser
