@@ -20,8 +20,4 @@
 	<None Include="README.md" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="assets\images\" />
-  </ItemGroup>
-
 </Project>
