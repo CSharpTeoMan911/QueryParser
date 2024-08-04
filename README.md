@@ -46,7 +46,7 @@ dotnet add package QueryParser --version 1.0.3
 
 ### Package Manager Console
 ``` ps
-NuGet\Install-Package QueryParser -Version 1.0.2
+NuGet\Install-Package QueryParser -Version 1.0.3
 ```
 
 ## Links
