@@ -1,14 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	 <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	<None Include="LICENSE.txt" Pack="true" Visible="false" PackagePath=""/>
+	<None Include="README.md" Pack="true" Visible="false" PackagePath=""/>
   </ItemGroup>
 
 </Project>
