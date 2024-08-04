@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include=".github\" />
+    <Folder Include="assets\images\" />
   </ItemGroup>
 
 </Project>
