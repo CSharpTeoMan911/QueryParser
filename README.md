@@ -1,6 +1,6 @@
 # QueryParser
 
-**QueryParser** it is a **.NET** package that allows users to convert objects into **HTTP** query parameters to be used within an **HTTP** request. This package is designed to be used with **ASP.Net** controllers and enable **C#** classes to be sent to **API controllers** as **query parameters**. By passing objects using the **Query section** of an **HTTP payload**, the quantity of information to be sent using the other **HTTP sections** is minimised, thus allowing the app to transmit data with more flexibility.
+**QueryParser** it is a **.NET** package that allows users to convert objects into **HTTP** query parameters to be used within an **HTTP** request. This package is designed to be used with **ASP.Net** controllers and enable **C#** classes to be sent to **API controllers** as **query parameters**. By passing objects using the **Query section** of an **HTTP payload**, the quantity of information to be sent using the other **HTTP sections** is minimised, thus allowing the app to transmit data with more flexibility. This package is using the **Newtonsoft.json** package.
 ```cs
 // [FromQuery] => The controller extracts the required payload from the url query parameters
 // [FromBody] => The controller extracts the required payload from the HTTP payload Body section
@@ -11,9 +11,6 @@ public async Task<string?> Get([FromQuery] AuthenticationModel? value)
   // Controller content
 }
 ``` 
-This package is using the **Newtonsoft.json** package. 
-
-<br/>
 
 ## Example usage
 ### Client
