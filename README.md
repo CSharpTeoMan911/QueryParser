@@ -38,12 +38,12 @@ string query_parameters = await QueryParser.QueryParsing.QueryParser<Authenticat
 
 ### .NET CLI 
 ``` ps
-dotnet add package QueryParser --version 1.0.3
+dotnet add package QueryParser --version 1.0.4
 ```
 
 ### Package Manager Console
 ``` ps
-NuGet\Install-Package QueryParser -Version 1.0.3
+NuGet\Install-Package QueryParser -Version 1.0.4
 ```
 
 ## Links
