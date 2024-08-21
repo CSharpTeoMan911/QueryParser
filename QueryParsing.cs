@@ -10,18 +10,25 @@ namespace QueryParser
             // STRING BUILDER OBJECT THAT CONTAINS THE FORMATED HTTP QUERY STRING
             StringBuilder query = new StringBuilder();
 
-            // OBJECT TO BE FORMATED AS A HTTP QUERY STRING SERIALISED AS A JSON STRING AND PARSED INTO A "JObject" OBJECT
-            JObject json_value = JObject.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(value));
-
-
-            if (value != null)
+            try
             {
-                // IF THE VALUE IS NOT NULL EXTRACT THE PARAMETERS OF THE "JObject" OBJECT AND FORMAT THEM IN HTTP QUERY STRING FORMAT
-                await Query_Object_Parameters_Extractor(query, json_value, null);
-            }
+                // OBJECT TO BE FORMATED AS A HTTP QUERY STRING SERIALISED AS A JSON STRING AND PARSED INTO A "JObject" OBJECT
+                JObject json_value = JObject.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(value));
 
-            // REMOVE ALL OBJECTS IN THE "JObject" OBJECT FROM THE MEMORY
-            json_value?.RemoveAll();
+
+                if (value != null)
+                {
+                    // IF THE VALUE IS NOT NULL EXTRACT THE PARAMETERS OF THE "JObject" OBJECT AND FORMAT THEM IN HTTP QUERY STRING FORMAT
+                    await Query_Object_Parameters_Extractor(query, json_value, null);
+                }
+
+                // REMOVE ALL OBJECTS IN THE "JObject" OBJECT FROM THE MEMORY
+                json_value?.RemoveAll();
+            }
+            catch
+            {
+                query.Append(System.Web.HttpUtility.UrlEncode(value?.ToString()));
+            }
 
             // RETURN THE FORMATED HTTP QUERY STRING
             return query.ToString();
