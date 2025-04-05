@@ -1,41 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace QueryParser
+namespace QueryParser.ParsingOperations
 {
-    public class QueryParsing
+    internal class QueryParser
     {
-        public static string QueryParser<Object>(Object? value)
-        {
-            // STRING BUILDER OBJECT THAT CONTAINS THE FORMATED HTTP QUERY STRING
-            StringBuilder query = new StringBuilder();
-
-            try
-            {
-                // OBJECT TO BE FORMATED AS A HTTP QUERY STRING SERIALISED AS A JSON STRING AND PARSED INTO A "JObject" OBJECT
-                JObject json_value = JObject.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(value));
-
-
-                if (value != null)
-                {
-                    // IF THE VALUE IS NOT NULL EXTRACT THE PARAMETERS OF THE "JObject" OBJECT AND FORMAT THEM IN HTTP QUERY STRING FORMAT
-                    Query_Object_Parameters_Extractor(query, json_value, null);
-                }
-
-                // REMOVE ALL OBJECTS IN THE "JObject" OBJECT FROM THE MEMORY
-                json_value?.RemoveAll();
-            }
-            catch
-            {
-                query.Append(System.Web.HttpUtility.UrlEncode(value?.ToString()));
-            }
-
-            // RETURN THE FORMATED HTTP QUERY STRING
-            return query.ToString();
-        }
-
-
-        private static bool Query_Array_Parameters_Extractor(StringBuilder query, JArray json_value, string name)
+        private void Query_Array_Parameters_Extractor(StringBuilder query, JArray json_value, string name)
         {
             // CREATE A "StringBuilder" TO GENERATE THE PROPRIETY NAME WITHIN IT
             StringBuilder name_builder = new StringBuilder();
@@ -73,16 +47,17 @@ namespace QueryParser
                 // IF THE CURRENT PROPRIETY IS A JSON OBJECT
                 if (current_element.Type == JTokenType.Object)
                 {
+
                     // CALL THE "Query_Object_Parameters_Extractor" METHOD AND PASS THE CURRENT OBJECT AS THE
                     // "JObject" OBJECT, THE "query" "StringBuilder" AS A REFERENCE, AND THE "name_result".
-                    Query_Object_Parameters_Extractor(query, (JObject)current_element, name_result);
+                    Query_Object_Parameters_Extractor(query, (JObject)current_element, name_result, asynchrnous);
                 }
                 // IF THE CURRENT PROPRIETY IS A JSON ARRAY
                 else if (current_element.Type == JTokenType.Array)
                 {
                     // PERFORM RECURSION TO EXTRACT THE VALUES
                     // FROM THE CURRENT "JArray" PROPRIETY.
-                    Query_Array_Parameters_Extractor(query, (JArray)current_element, name_result);
+                    Query_Array_Parameters_Extractor(query, (JArray)current_element, name_result, asynchrnous);
                 }
                 else
                 {
@@ -104,11 +79,9 @@ namespace QueryParser
                     query.Append("&");
                 }
             }
-
-            return true;
         }
 
-        private static bool Query_Object_Parameters_Extractor(StringBuilder query, JObject json_value, string? name)
+        public void Query_Object_Parameters_Extractor(StringBuilder query, JObject json_value, string? name, bool asynchronous)
         {
             // CREATE A "StringBuilder" TO GENERATE THE PROPRIETY NAME WITHIN IT
             StringBuilder name_builder = new StringBuilder();
@@ -156,14 +129,14 @@ namespace QueryParser
                     {
                         // PERFORM RECURSION AND PASS THE CURRENT OBJECT AS THE "JObject" OBJECT,
                         // THE "query" "StringBuilder" AS A REFERENCE, AND THE "name_result".
-                        Query_Object_Parameters_Extractor(query, (JObject)proprieties_enumerator.Current.Value, name_result);
+                        Query_Object_Parameters_Extractor(query, (JObject)proprieties_enumerator.Current.Value, name_result, asynchronous);
                     }
                     // IF THE CURRENT PROPRIETY IS A JSON ARRAY
                     else if (proprieties_enumerator.Current.Value.Type == JTokenType.Array)
                     {
                         // CALL THE "Query_Array_Parameters_Extractor" METHOD TO EXTRACT THE VALUES
                         // FROM THE CURRENT "JArray" PROPRIETY.
-                        Query_Array_Parameters_Extractor(query, (JArray)proprieties_enumerator.Current.Value, name_result);
+                        Query_Array_Parameters_Extractor(query, (JArray)proprieties_enumerator.Current.Value, name_result, asynchronous);
                     }
                     else
                     {
@@ -199,8 +172,6 @@ namespace QueryParser
                 // DEALLOCATE THE "proprieties_enumerator" OBJECT FROM MEMORY
                 proprieties_enumerator?.Dispose();
             }
-
-            return true;
         }
     }
 }
