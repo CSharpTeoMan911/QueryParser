@@ -8,7 +8,7 @@
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<Authors>Teodor Mihail</Authors>
-	<Version>1.0.5</Version>
+	<Version>1.0.6</Version>
 	<Description>
 		QueryParser it is a .NET package that allows users to convert objects into HTTP query parameters to be used within an HTTP request. This package is designed to be used with ASP.Net controllers and enable C# classes to be sent to API controllers as query parameters. By passing objects using the Query section of an HTTP payload, the quantity of information to be sent using the other HTTP sections is minimised, thus allowing the app to transmit data with more flexibility.
 	</Description>
