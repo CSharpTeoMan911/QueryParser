@@ -14,7 +14,7 @@ public async Task<string?> Get([FromQuery] AuthenticationModel? value)
 
 ## Example usage
 ### Client
-![Code snippet](https://github.com/user-attachments/assets/bf3b91b0-b451-496a-966f-74672636f064)
+![Code snippet](https://raw.githubusercontent.com/CSharpTeoMan911/QueryParser/master/assets/images/QueryParser%20Example.png)
 ### Controller
 ![GetAPI Example](https://raw.githubusercontent.com/CSharpTeoMan911/QueryParser/master/assets/images/Get%20API.png)
 
